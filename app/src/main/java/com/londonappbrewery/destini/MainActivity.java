@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
                     t3Story();
                 } else if (topButton.getText().equals("I love Elton John! Hand him the cassette tape.")) {
                     storyTextView.setText(R.string.T6_End);
+                    hideButtons();
                 }
             }
 
@@ -50,8 +51,10 @@ public class MainActivity extends AppCompatActivity {
                     t2Story();
                 } else if (bottomButton.getText().equals("It\'s him or me! You take the knife and stab him.")) {
                     storyTextView.setText(R.string.T5_End);
+                    hideButtons();
                 } else if (bottomButton.getText().equals("Wait, I know how to change a tire.")) {
                     storyTextView.setText(R.string.T4_End);
+                    hideButtons();
                 }
             }
 
@@ -61,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
                 bottomButton.setText(R.string.T2_Ans2);
             }
         });
-
+    }
+    
+    void hideButtons() {
+        topButton.setVisibility(View.GONE);
+        bottomButton.setVisibility(View.GONE);
     }
 }
