@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     TextView storyTextView;
     Button topButton;
     Button bottomButton;
+    int storyIndex = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +28,9 @@ public class MainActivity extends AppCompatActivity {
         topButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (topButton.getText().equals("I\'ll hop in. Thanks for the help!") ||
-                        topButton.getText().equals("At least he\'s honest. I\'ll climb in.")) {
+                if (storyIndex == 1 || storyIndex == 2) {
                     t3Story();
-                } else if (topButton.getText().equals("I love Elton John! Hand him the cassette tape.")) {
+                } else if (storyIndex == 3) {
                     storyTextView.setText(R.string.T6_End);
                     hideButtons();
                 }
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 storyTextView.setText(R.string.T3_Story);
                 topButton.setText(R.string.T3_Ans1);
                 bottomButton.setText(R.string.T3_Ans2);
+                storyIndex = 3;
             }
         });
 
@@ -47,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
         bottomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (bottomButton.getText().equals("Better ask him if he\'s a murderer first.")) {
+                if (storyIndex == 1) {
                     t2Story();
-                } else if (bottomButton.getText().equals("It\'s him or me! You take the knife and stab him.")) {
+                } else if (storyIndex == 3) {
                     storyTextView.setText(R.string.T5_End);
                     hideButtons();
-                } else if (bottomButton.getText().equals("Wait, I know how to change a tire.")) {
+                } else if (storyIndex == 2) {
                     storyTextView.setText(R.string.T4_End);
                     hideButtons();
                 }
@@ -62,10 +63,11 @@ public class MainActivity extends AppCompatActivity {
                 storyTextView.setText(R.string.T2_Story);
                 topButton.setText(R.string.T2_Ans1);
                 bottomButton.setText(R.string.T2_Ans2);
+                storyIndex = 2;
             }
         });
     }
-    
+
     void hideButtons() {
         topButton.setVisibility(View.GONE);
         bottomButton.setVisibility(View.GONE);
